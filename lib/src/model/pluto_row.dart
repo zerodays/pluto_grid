@@ -7,10 +7,12 @@ class PlutoRow {
     PlutoRowType? type,
     this.sortIdx = 0,
     bool checked = false,
+    bool expanded = false,
     Key? key,
   })  : type = type ?? PlutoRowTypeNormal.instance,
         _checked = checked,
         _state = PlutoRowState.none,
+        _expanded = expanded,
         _key = key ?? UniqueKey();
 
   final PlutoRowType type;
@@ -24,6 +26,8 @@ class PlutoRow {
   int sortIdx;
 
   bool? _checked;
+
+  bool? _expanded;
 
   PlutoRow? _parent;
 
@@ -114,6 +118,8 @@ class PlutoRow {
   /// and in this case, even if the filtering condition is not
   /// Make sure it stays in the list unless you change the filtering again.
   PlutoRowState get state => _state;
+
+  bool get expanded => _expanded ?? false;
 
   void setParent(PlutoRow? row) {
     _parent = row;

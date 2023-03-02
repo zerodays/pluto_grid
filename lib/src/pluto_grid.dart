@@ -45,6 +45,8 @@ typedef CreateFooterCallBack = Widget Function(
 typedef PlutoRowColorCallback = Color Function(
     PlutoRowColorContext rowColorContext);
 
+typedef PlutoExpandedRender = Widget Function(PlutoRow row, int index)?;
+
 /// [PlutoGrid] is a widget that receives columns and rows and is expressed as a grid-type UI.
 ///
 /// [PlutoGrid] supports movement and editing with the keyboard,
@@ -76,6 +78,7 @@ class PlutoGrid extends PlutoStatefulWidget {
     this.configuration = const PlutoGridConfiguration(),
     this.notifierFilterResolver,
     this.mode = PlutoGridMode.normal,
+    this.expandedRender,
   }) : super(key: key);
 
   /// {@template pluto_grid_property_columns}
@@ -323,6 +326,9 @@ class PlutoGrid extends PlutoStatefulWidget {
   /// [PlutoGridMode.popup]
   /// {@macro pluto_grid_mode_popup}
   final PlutoGridMode mode;
+
+  /// The function used to render a widget below each expanded row
+  final PlutoExpandedRender expandedRender;
 
   /// [setDefaultLocale] sets locale when [Intl] package is used in [PlutoGrid].
   ///
@@ -638,7 +644,7 @@ class PlutoGridState extends PlutoStateWithChange<PlutoGrid> {
                 /// Body columns and rows.
                 LayoutId(
                   id: _StackName.bodyRows,
-                  child: PlutoBodyRows(_stateManager),
+                  child: PlutoBodyRows(_stateManager, expandedRender: widget.expandedRender,),
                 ),
                 LayoutId(
                   id: _StackName.bodyColumns,

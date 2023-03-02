@@ -6,9 +6,11 @@ import 'ui.dart';
 
 class PlutoBodyRows extends PlutoStatefulWidget {
   final PlutoGridStateManager stateManager;
+  final PlutoExpandedRender expandedRender;
 
   const PlutoBodyRows(
     this.stateManager, {
+      required this.expandedRender,
     super.key,
   });
 
@@ -99,10 +101,10 @@ class PlutoBodyRowsState extends PlutoStateWithChange<PlutoBodyRows> {
             scrollDirection: Axis.vertical,
             physics: const ClampingScrollPhysics(),
             itemCount: _rows.length,
-            itemExtent: stateManager.rowTotalHeight,
+            shrinkWrap: true,
             addRepaintBoundaries: false,
             itemBuilder: (ctx, i) {
-              return PlutoBaseRow(
+              final row = PlutoBaseRow(
                 key: ValueKey('body_row_${_rows[i].key}'),
                 rowIdx: i,
                 row: _rows[i],
@@ -110,6 +112,17 @@ class PlutoBodyRowsState extends PlutoStateWithChange<PlutoBodyRows> {
                 stateManager: stateManager,
                 visibilityLayout: true,
               );
+
+              if (_rows[i].expanded && widget.expandedRender != null) {
+                return Column(
+                  children: [
+                    row,
+                    widget.expandedRender!(_rows[i], i),
+                  ],
+                );
+              } else {
+                return row;
+              }
             },
           ),
         ),
