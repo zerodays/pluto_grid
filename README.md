@@ -10,6 +10,8 @@
 - Hover color the same as the selected color.
 
 This was done in order to expand PlutoGrid to suite the needs of a project we at [zerodays](https://github.com/zerodays) are working on. Feel free to use this fork. However, maintenance or even compatibility with the future versions of PlutoGrid is not guaranteed.
+
+### Back to the original README:
 <br>
 
 `PlutoGrid` is a `DataGrid` that can be operated with the keyboard in various situations such as moving cells.  
