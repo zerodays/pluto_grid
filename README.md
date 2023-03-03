@@ -4,6 +4,12 @@
 [![codecov](https://codecov.io/gh/bosskmk/pluto_grid/branch/master/graph/badge.svg)](https://codecov.io/gh/bosskmk/pluto_grid)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+### This fork of PlutoGrid provides the following features:
+- The ability for rows be expanded.
+- The ability to provide an `expandedRender` function that takes a `PlutoRow` and returns a `Widget` to be rendered under the row in question.
+- Hover color the same as the selected color.
+
+This was done in order to expand PlutoGrid to suite the needs of a project we at [zerodays](https://github.com/zerodays) are working on. Feel free to use this fork. However, maintenance or even compatibility with the future versions of PlutoGrid is not guaranteed.
 <br>
 
 `PlutoGrid` is a `DataGrid` that can be operated with the keyboard in various situations such as moving cells.  
