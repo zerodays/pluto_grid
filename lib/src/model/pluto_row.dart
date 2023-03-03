@@ -27,7 +27,7 @@ class PlutoRow {
 
   bool? _checked;
 
-  bool? _expanded;
+  bool _expanded;
 
   PlutoRow? _parent;
 
@@ -119,7 +119,7 @@ class PlutoRow {
   /// Make sure it stays in the list unless you change the filtering again.
   PlutoRowState get state => _state;
 
-  bool get expanded => _expanded ?? false;
+  bool get expanded => _expanded;
 
   void setParent(PlutoRow? row) {
     _parent = row;

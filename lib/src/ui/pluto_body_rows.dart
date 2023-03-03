@@ -6,7 +6,7 @@ import 'ui.dart';
 
 class PlutoBodyRows extends PlutoStatefulWidget {
   final PlutoGridStateManager stateManager;
-  final PlutoExpandedRender expandedRender;
+  final PlutoExpandedRender? expandedRender;
 
   const PlutoBodyRows(
     this.stateManager, {
@@ -101,7 +101,7 @@ class PlutoBodyRowsState extends PlutoStateWithChange<PlutoBodyRows> {
             scrollDirection: Axis.vertical,
             physics: const ClampingScrollPhysics(),
             itemCount: _rows.length,
-            shrinkWrap: true,
+            shrinkWrap: true, // Used instead of a fixed height to prevent the expanded widget from overflowing.
             addRepaintBoundaries: false,
             itemBuilder: (ctx, i) {
               final row = PlutoBaseRow(

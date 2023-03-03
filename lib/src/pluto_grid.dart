@@ -45,7 +45,7 @@ typedef CreateFooterCallBack = Widget Function(
 typedef PlutoRowColorCallback = Color Function(
     PlutoRowColorContext rowColorContext);
 
-typedef PlutoExpandedRender = Widget Function(PlutoRow row, int index)?;
+typedef PlutoExpandedRender = Widget Function(PlutoRow row, int index);
 
 /// [PlutoGrid] is a widget that receives columns and rows and is expressed as a grid-type UI.
 ///
@@ -328,7 +328,7 @@ class PlutoGrid extends PlutoStatefulWidget {
   final PlutoGridMode mode;
 
   /// The function used to render a widget below each expanded row
-  final PlutoExpandedRender expandedRender;
+  final PlutoExpandedRender? expandedRender;
 
   /// [setDefaultLocale] sets locale when [Intl] package is used in [PlutoGrid].
   ///
